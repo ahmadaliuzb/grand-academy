@@ -2,6 +2,7 @@ package uz.grand.grandacademy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,6 +20,7 @@ public class ApplicationSecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .antMatchers(USERS_ENDPOINT,
                                 LOGIN_ENDPOINT,
@@ -27,7 +29,9 @@ public class ApplicationSecurityConfiguration {
                                 "/static/**",
                                 "/*.js",
                                 "/*.css",
-                                "/img/**").permitAll()
+                                "/img/**",
+                                "/helper").permitAll()
+                        .antMatchers("/register/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form

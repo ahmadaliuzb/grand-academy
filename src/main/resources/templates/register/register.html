@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -25,20 +25,26 @@
     <div class="row">
         <div class="col-md-4 mx-auto">
             <div class="myform form ">
-                <form action="/register" method="post" name="login">
+                <form action="/register/send" method="post" name="register" >
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control my-input" id="name" placeholder="Ism">
+                        <input type="text" name="name" class="form-control my-input" id="name" placeholder="Ism"
+                               required
+                               oninvalid="this.setCustomValidity('Ismni kirting')">
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control my-input" id="email" placeholder="Email">
+                        <input type="email" name="email" class="form-control my-input" id="email" placeholder="Email"
+                               required
+                               oninvalid="this.setCustomValidity('Emailni kiritmadingiz yoki xato kiritdingiz')">
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control my-input" id="password"
-                               placeholder="Parol">
+                               placeholder="Parol" required
+                               oninvalid="this.setCustomValidity('Parolni kiritng')">
                     </div>
                     <div class="form-group">
                         <input type="text" min="0" name="phone" id="phone" class="form-control my-input"
-                               placeholder="Telefon raqam">
+                               placeholder="Telefon raqam" required
+                               oninvalid="this.setCustomValidity('Telefon raqamni kirting')">
                     </div>
                     <div class="text-center ">
                         <button type="submit" class="btn btn-block send-button tx-tfm">Ro'yhatdan o'tish</button>

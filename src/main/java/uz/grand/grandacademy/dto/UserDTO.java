@@ -2,6 +2,7 @@ package uz.grand.grandacademy.dto;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import java.util.Set;
 
 
 public class UserDTO {
@@ -10,6 +11,7 @@ public class UserDTO {
     private String password;
     private String phoneNumber;
 
+    private Set<String> roleNames;
     public UserDTO(String name, String email, String password, String phoneNumber) {
         this.name = name;
         this.email = email;
@@ -50,5 +52,21 @@ public class UserDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Set<String> getRoleNames() {
+        return roleNames;
+    }
+
+    public void setRoleNames(Set<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public UserDTO(String name, String email, String password, String phoneNumber, Set<String> roleNames) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.roleNames = roleNames;
     }
 }
